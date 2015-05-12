@@ -1,0 +1,2 @@
+# raffleator
+Raffle generator
