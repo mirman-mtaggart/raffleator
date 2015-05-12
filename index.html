@@ -1,0 +1,37 @@
+<html>
+<head>
+<!--BEGIN SOURCE FILES-->
+<!--JQUERY-->
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="node_modules/jquery-mobile/dist/jquery.mobile.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="node_modules/jquery-mobile/dist/jquery.mobile.css">
+<!--BOOTSTRAP-->
+	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css"/>
+	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--ANGULAR-->
+	<script src="node_modules/angular/angular.min.js"></script>
+<!--APP-->
+	<script src="js/app.js"></script>
+<!--CONTROLLERS-->
+	<script src="js/controllers/guestCtrl.js"></script>
+	<script src="js/controllers/raffleCtrl.js"></script>
+</head>
+<body ng-app="raffleApp">
+	<div class="container-fluid">
+		<h1 class="text-center">RaffleTime!</h1>
+		<div class="row" ng-controller="guestCtrl">
+			<div class="col-md-6 col-xs-12">
+				<h2>Guests</h2>
+				<form>
+					<div class="form-group">
+						<label>Add Guest</label>
+						<input type="text" class="form-control" ng-model="newGuest" placeholder="Add guest's name" />
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
