@@ -5,7 +5,6 @@ angular.module("raffleApp")
 	$scope.winners = [];
 	$scope.raffleTime = false;
 	$scope.addGuest = function(){
-		$scope.newGuest.raffleNum = $scope.guests.length+1;
 		$scope.guests.push($scope.newGuest);
 		$scope.newGuest = {};
 	};
@@ -15,4 +14,7 @@ angular.module("raffleApp")
 		$scope.guests.splice(choice,1);
 		$scope.winners.push(newWinner);
 	};
+	$scope.removeGuest = function(index){
+		$scope.guests.splice(index,1);
+	}
 }]);
