@@ -3,8 +3,6 @@
 <!--BEGIN SOURCE FILES-->
 <!--JQUERY-->
 	<script src="node_modules/jquery/dist/jquery.min.js"></script>
-	<script src="node_modules/jquery-mobile/dist/jquery.mobile.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="node_modules/jquery-mobile/dist/jquery.mobile.css">
 <!--BOOTSTRAP-->
 	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css"/>
 	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css"/>
@@ -12,24 +10,53 @@
 <!--ANGULAR-->
 	<script src="node_modules/angular/angular.min.js"></script>
 <!--APP-->
+	<link href='https://fonts.googleapis.com/css?family=Bevan' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="css/main.css"/>
 	<script src="js/app.js"></script>
+	<script src="js/rsvp.js"></script>
 <!--CONTROLLERS-->
-	<script src="js/controllers/guestCtrl.js"></script>
 	<script src="js/controllers/raffleCtrl.js"></script>
 </head>
 <body ng-app="raffleApp">
-	<div class="container-fluid">
+	<div class="container" ng-controller="raffleCtrl">
 		<h1 class="text-center">RaffleTime!</h1>
-		<div class="row" ng-controller="guestCtrl">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="well text-center">
+					<ul id="raffleator" class="list-group">
+						<li class="list-group-item" ng-repeat="winner in winners">
+							<h3>{{winner.name}}</h3>
+						</li>
+					</ul>
+					<button id="raffle-time" class="btn btn-danger" ng-click="getWinner()">
+						<span ng-show="raffleTime"><h4>Stop!</h4></span>
+						<span ng-hide="raffleTime"><h4>RaffleTime!</h4></span>
+					</button>
+				</div>
+			</div>
+			<div class="row">
 			<div class="col-md-6 col-xs-12">
 				<h2>Guests</h2>
-				<form>
-					<div class="form-group">
-						<label>Add Guest</label>
-						<input type="text" class="form-control" ng-model="newGuest" placeholder="Add guest's name" />
-					</div>
-				</form>
+				<div class="well">
+					<form name="guestForm" ng-submit="addGuest(guestForm)" novalidate>
+						<div class="form-group">
+							<label>Add Guest</label>
+							<input type="text" class="form-control" ng-model="newGuest.name" placeholder="Add guest's name" />
+							<input class="btn btn-success" type="submit" value="Add"/>
+						</div>
+					</form>				
+				</div>
 			</div>
+			<div class="col-md-6 col-xs-12" ng-show="guests.length > 0">
+				<h2>Guest List</h2>
+				<ul class="list-group">
+					<li class="list-group-item" ng-repeat="guest in guests">
+						<p><b>{{guest.name}}</b></p>
+						<p>{{guest.raffleNum}}</p>
+					</li>
+				</ul>
+			</div>
+		</div>
 		</div>
 	</div>
 </body>
